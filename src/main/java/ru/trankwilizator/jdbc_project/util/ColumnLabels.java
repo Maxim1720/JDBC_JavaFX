@@ -1,13 +1,11 @@
 package ru.trankwilizator.jdbc_project.util;
 
-import ru.trankwilizator.jdbc_project.util.ConnectionFabric;
-
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ColumnsLabel {
+public class ColumnLabels {
 
     public static List<String> labels(String query){
         List<String> labels = new ArrayList<>();

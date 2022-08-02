@@ -1,32 +1,26 @@
-package ru.trankwilizator.jdbc_project.service;
+package ru.trankwilizator.jdbc_project.service.table;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ru.trankwilizator.jdbc_project.model.EmployeeData;
-import ru.trankwilizator.jdbc_project.service.query.AllEmployees;
-import ru.trankwilizator.jdbc_project.service.query.EmployeeById;
-import ru.trankwilizator.jdbc_project.util.ColumnsLabel;
-import ru.trankwilizator.jdbc_project.util.Queries;
+import ru.trankwilizator.jdbc_project.service.query.QueryExecutor;
 
 import java.util.List;
 
-public class TableFiller {
+public abstract class TableFiller implements ITableFiller{
     private final TableView<EmployeeData> table;
-    public TableFiller(TableView<EmployeeData> tableView){
+    private final QueryExecutor queryExecutor;
+    public TableFiller(TableView<EmployeeData> tableView, QueryExecutor queryExecutor){
         this.table = tableView;
+        this.queryExecutor = queryExecutor;
         table.getItems().clear();
     }
 
-    public TableView<EmployeeData> getFilledByAllEmployees() {
-        fillTable(new AllEmployees());
-        return table;
-    }
-
-    public TableView<EmployeeData> getFilledById(Integer id){
-        fillTable(new EmployeeById(id));
+    @Override
+    public TableView<EmployeeData> getFilled() {
+        fillTable(queryExecutor);
         return table;
     }
 

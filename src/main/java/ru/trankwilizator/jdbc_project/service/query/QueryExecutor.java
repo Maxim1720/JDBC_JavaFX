@@ -1,4 +1,4 @@
-package ru.trankwilizator.jdbc_project.service;
+package ru.trankwilizator.jdbc_project.service.query;
 
 import javafx.collections.ObservableList;
 import ru.trankwilizator.jdbc_project.model.EmployeeData;
